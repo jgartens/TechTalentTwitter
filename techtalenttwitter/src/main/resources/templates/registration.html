@@ -1,19 +1,12 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www,thymeleaf.org/thymleaf-extras-springsecurity4">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<head th:include="fragments/layout :: headerFragment">
     <title>Log in</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
-    <link rel="stylesheet" href="/custom.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script src="/custom.js"></script>
+
 </head>
 
 <body>
-    <div class="container">
+    <div  id="signup" class="container">
         <h2>Sign up</h2>		
         <form th:action="@{/signup}" th:object="${user}" method="post" autocomplete="off" >
             <div class="form-group">
@@ -37,9 +30,28 @@
                 <label th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="validation-message"></label>
             </div>
             <div class="form-group">
-                <button class="btn btn-md btn-success btn-block" name="Submit" value="Submit" type="Submit" th:text="Submit"></button>
+                <button class="btn btn-md btn-success btn-block" name="Submit" value="Submit" type="Submit" th:text="Submit" onclick="myFunction()"></button>
             </div>
         </form>
     </div>
+    <div class="container" align="center">
+        <div th:if="${success}" >
+            <script th:inline="javascript">
+
+                        document.getElementById("signup").style.display="none";
+
+
+                
+                </script>
+
+                <div id="success">
+                    <h1><span class="text-success" th:utext="${success}"></span></h1>
+
+                    <a class="btn btn-md btn-success btn-block" th:href="@{/login}">Back To Login Page</a>
+                </div>
+        </div> 
+    </div>
+    
+
 </body>
 </html>

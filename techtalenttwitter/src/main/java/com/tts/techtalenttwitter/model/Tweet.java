@@ -34,9 +34,9 @@ public class Tweet {
     @OnDelete(action = OnDeleteAction.CASCADE)
     private User user;
 
-    @ManyToMany(fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST, CascadeType.MERGE})
-    @JoinTable(name = "tweet_tag", joinColumns = @JoinColumn(name = "tweet_id"), inverseJoinColumns = @JoinColumn(name = "tag_id"))
-    private List<Tag> tags;
+    // @ManyToMany(fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST, CascadeType.MERGE})
+    // @JoinTable(name = "tweet_tag", joinColumns = @JoinColumn(name = "tweet_id"), inverseJoinColumns = @JoinColumn(name = "tag_id"))
+    // private List<Tag> tags;
     
     @NotEmpty(message = "Tweet cannot be empty")
 	@Length(max = 280, message = "Tweet cannot have more than 280 characters")
@@ -47,12 +47,12 @@ public class Tweet {
     
     public Tweet(){}
 
-    public Tweet(Long id, User user, List<Tag> tags,
+    public Tweet(Long id, User user, 
             @NotEmpty(message = "Tweet cannot be empty") @Length(max = 280, message = "Tweet cannot have more than 280 characters") String message,
             Date createdAt) {
         this.id = id;
         this.user = user;
-        this.tags = tags;
+        // this.tags = tags;
         this.message = message;
         this.createdAt = createdAt;
     }
@@ -73,15 +73,15 @@ public class Tweet {
         this.user = user;
     }
 
-    public List<Tag> getTags() {
-        return tags;
-    }
+    // public List<Tag> getTags() {
+    //     return tags;
+    // }
 
-    public void setTags(List<Tag> tags) {
-        this.tags = tags;
-    }
+    // public void setTags(List<Tag> tags) {
+    //     this.tags = tags;
+    // }
 
-    
+
     public String getMessage() {
         return message;
     }
@@ -100,7 +100,7 @@ public class Tweet {
 
     @Override
     public String toString() {
-        return "Tweet [createdAt=" + createdAt + ", id=" + id + ", message=" + message + ", tags=" + tags + ", user="
+        return "Tweet [createdAt=" + createdAt + ", id=" + id + ", message=" + message + ",   user="
                 + user + "]";
     }
 

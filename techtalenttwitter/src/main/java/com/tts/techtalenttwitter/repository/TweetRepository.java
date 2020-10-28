@@ -12,5 +12,5 @@ import org.springframework.stereotype.Repository;
 public interface TweetRepository extends CrudRepository<Tweet, Long>{
     List<Tweet> findAllByOrderByCreatedAtDesc();
     List<Tweet> findAllByUserOrderByCreatedAtDesc(User user);
-    List <Tweet> findAllByUserInOrderByCreeatedAtDesc(List<User> users);
+    List <Tweet> findAllByUserInOrderByCreatedAtDesc(List<User> users);
 }

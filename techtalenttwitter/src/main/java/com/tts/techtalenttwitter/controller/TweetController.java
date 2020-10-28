@@ -32,6 +32,12 @@ public class TweetController {
         return "feed";
     }
 
+    @GetMapping(value = "/tweets/new")
+    public String getTweetForm(Model model) {
+        model.addAttribute("tweet", new Tweet());
+        return "newTweet";
+    }
+
     @PostMapping(value = "/tweets")
     public String submitTweetForm(@Valid Tweet tweet, BindingResult bindingResult, Model model){
         User user = userService.getloggedInUser();
@@ -42,5 +48,12 @@ public class TweetController {
             model.addAttribute("tweet", new Tweet());
         }
         return "newTweet";
+    }
+
+    @PostMapping(value = "/tweets/home")
+    public String navToFeed(@Valid Tweet tweet, BindingResult bindingResult, Model model){
+        List<Tweet> tweets = tweetService.findAll();
+        model.addAttribute("tweetList", tweets);
+        return "feed";
     }
 }
