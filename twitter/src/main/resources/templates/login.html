@@ -1,13 +1,15 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www,thymeleaf.org/thymleaf-extras-springsecurity4">
-<head th:include="fragments/layout :: headerFragment">
-
-    <title>Log in</title>
-
-</head>
-<body>
+<html
+  xmlns:th="http://www.thymeleaf.org"
+  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4"
+>
+  <head>
+    <title>Login</title>
+    <div th:replace="/fragments/headlinks :: head-styles"></div>
+  </head>
+  <body>
     <div class="container">
-        <div th:replace="fragments/navbar"></div>
+      <div th:replace="fragments/navbar"></div>
 
       <h2>Welcome!</h2>
       <form th:action="@{/login}" method="post">
@@ -40,8 +42,8 @@
           Log in
         </button>
       </form>
-      <a class="btn btn-md btn-success btn-block" th:href="@{/signup}">
-        Signup</a>
+      <!-- Sign-up button from homework -->
+      <a class="btn btn-md btn-info btn-block" th:href="@{/signup}">Signup</a>
     </div>
-</body>
+  </body>
 </html>

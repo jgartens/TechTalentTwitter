@@ -1,14 +1,11 @@
- 
-      
-      
 <!DOCTYPE html>
 <html
   xmlns:th="http://www.thymeleaf.org"
   xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4"
 >
-<head th:include="fragments/layout :: headerFragment">
-
+  <head>
     <title>Feed</title>
+    <div th:replace="/fragments/headlinks :: head-styles"></div>
 
   </head>
   <body>
@@ -36,3 +33,5 @@
     </div>
   </body>
 </html>
+
+
